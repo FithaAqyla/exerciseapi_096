@@ -30,14 +30,16 @@ class KategoriBarangController {
       throw Exception('Gagal menambahkan data kategori barang');
     }
   }
+
   Future updateKategoriBarang(KategoriBarangModel kategoriBarang) async {
-    var result = await http.post(Uri.parse("${apiUrl}barang/getAllKB/"), body: {
+    var result =
+        await http.post(Uri.parse("${apiUrl}barang/update/{id}/"), body: {
       "nama_kategori_barang": kategoriBarang.nama,
     });
     if (result.statusCode == 200) {
       return jsonDecode(result.body);
     } else {
-      throw Exception('Gagal menambahkan data kategori barang');
+      throw Exception('Gagal update data kategori barang');
     }
   }
 }
