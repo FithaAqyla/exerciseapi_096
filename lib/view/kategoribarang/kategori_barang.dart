@@ -3,8 +3,6 @@ import 'package:restapi/contoller/kategori_barang_controller.dart';
 import 'package:restapi/model/kategori_barang_model.dart';
 import 'package:restapi/view/kategoribarang/add_kategori_barang.dart';
 
-
-
 class KategoriBarang extends StatefulWidget {
   const KategoriBarang({super.key});
 
@@ -51,8 +49,10 @@ class _KategoriBarangState extends State<KategoriBarang> {
       )),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => const AddKategoriBarang()));
-        
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const AddKategoriBarang()));
         },
         child: const Icon(Icons.add),
       ),
