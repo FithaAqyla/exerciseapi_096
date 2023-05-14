@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:restapi/contoller/kategori_barang_controller.dart';
 import 'package:restapi/model/kategori_barang_model.dart';
 import 'package:restapi/view/kategoribarang/add_kategori_barang.dart';
+import 'package:restapi/view/kategoribarang/update_kategori_barang.dart';
 
 class KategoriBarang extends StatefulWidget {
   const KategoriBarang({super.key});
@@ -46,9 +47,18 @@ class _KategoriBarangState extends State<KategoriBarang> {
           return Card(
             child: ListTile(
               title: Text(listKategoriBarang[index].nama),
-              trailing: IconButton(
-                onPressed: () {},
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateKategoriBarang(
+                      NMkategori: listKategoriBarang[index].nama,
+                      id: listKategoriBarang[index].id,
+                    )));
+                  }, 
                 icon: const Icon(Icons.edit),
+              ),
+                ],
               ),
             ),
           );
