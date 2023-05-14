@@ -19,7 +19,6 @@ class _KategoriBarangState extends State<KategoriBarang> {
     // TODO: implement initState
     super.initState();
     getKategoriBarang();
-    
   }
 
   void getKategoriBarang() async {
@@ -28,7 +27,8 @@ class _KategoriBarangState extends State<KategoriBarang> {
       listKategoriBarang = kategoriBarang;
     });
   }
-    void delKategoriBarang(KategoriBarangModel kategoriBarang) {
+
+  void delKategoriBarang(KategoriBarangModel kategoriBarang) {
     setState(() {
       listKategoriBarang.remove(kategoriBarang);
     });
@@ -50,14 +50,30 @@ class _KategoriBarangState extends State<KategoriBarang> {
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  IconButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateKategoriBarang(
-                      NMkategori: listKategoriBarang[index].nama,
-                      id: listKategoriBarang[index].id,
-                    )));
-                  }, 
-                icon: const Icon(Icons.edit),
-              ),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => UpdateKategoriBarang(
+                                    NMkategori: listKategoriBarang[index].nama,
+                                    id: listKategoriBarang[index].id,
+                                  )));
+                    },
+                    icon: const Icon(Icons.edit),
+                  ),
+                  IconButton(
+                    onPressed: () async {
+                      kategoriBarangController
+                          .deleteKategoriBarang(listKategoriBarang[index].id)
+                          .then((value) {
+                        setState(() {
+                          listKategoriBarang.removeAt(index);
+                        });
+                      });
+                    },
+                    icon: const Icon(Icons.remove),
+                  ),
                 ],
               ),
             ),
