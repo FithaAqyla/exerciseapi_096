@@ -72,7 +72,10 @@ class _KategoriBarangState extends State<KategoriBarang> {
                         });
                       });
                     },
-                    icon: const Icon(Icons.remove),
+                    icon: const Icon(
+                      Icons.delete,
+                      color: Colors.blue,
+                    ),
                   ),
                 ],
               ),
