@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restapi/view/kategoribarang/add_kategori_barang.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,7 +8,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const AddKategoriBarang(),
     );
   }
 }
@@ -41,13 +41,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        
-        
         title: Text(widget.title),
       ),
       body: Center(
-        
-        
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -65,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), 
+      ),
     );
   }
 }

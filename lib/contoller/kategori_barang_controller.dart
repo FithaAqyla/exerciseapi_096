@@ -52,7 +52,6 @@ class KategoriBarangController {
       var result =  await http.post(Uri.parse("${apiUrl}barang/deleteKB/$id"));
 
     if (result.statusCode == 200) {
-        print("Kategori Barang Berhasil diHapus");
         return true;
       }
       return false;
