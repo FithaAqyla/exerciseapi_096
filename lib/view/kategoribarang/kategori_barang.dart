@@ -11,18 +11,25 @@ class KategoriBarang extends StatefulWidget {
 }
 
 class _KategoriBarangState extends State<KategoriBarang> {
-  final kategoriBarangController = barangController();
+  final kategoriBarangController = KategoriBarangController();
   List<KategoriBarangModel> listKategoriBarang = [];
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    getKategoriBarang();
+    
   }
 
   void getKategoriBarang() async {
     final kategoriBarang = await kategoriBarangController.getKategoriBarang();
     setState(() {
       listKategoriBarang = kategoriBarang;
+    });
+  }
+    void delKategoriBarang(KategoriBarangModel kategoriBarang) {
+    setState(() {
+      listKategoriBarang.remove(kategoriBarang);
     });
   }
 
