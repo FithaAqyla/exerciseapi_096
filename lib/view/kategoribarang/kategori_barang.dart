@@ -72,7 +72,7 @@ class _KategoriBarangState extends State<KategoriBarang> {
                         });
                       });
                       var snackBar =
-                      const SnackBar(content: Text('Data Berhasil Disimpan'));
+                      const SnackBar(content: Text('Data Berhasil Dihapus'));
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 
 
