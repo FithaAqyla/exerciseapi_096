@@ -6,7 +6,9 @@ import 'package:restapi/model/kategori_barang_model.dart';
 import 'package:restapi/view/kategoribarang/kategori_barang.dart';
 
 class UpdateKategoriBarang extends StatefulWidget {
-  const UpdateKategoriBarang({super.key});
+  const UpdateKategoriBarang({super.key, this.id, this.NMkategori });
+  final int? id;
+  final String? NMkategori;
 
   @override
   State<UpdateKategoriBarang> createState() => _UpdateKategoriBarangState();
@@ -16,10 +18,6 @@ class _UpdateKategoriBarangState extends State<UpdateKategoriBarang> {
   final kategoriBarangController = KategoriBarangController();
   String? nama;
 
-  void updkategoriBarang() async {
-    KategoriBarangModel kategoriBarang = KategoriBarangModel(nama: nama!);
-    await kategoriBarangController.updateKategoriBarang(kategoriBarang);
-  }
   @override
   Widget build(BuildContext context) {
     var formkey = GlobalKey<FormState>();
@@ -52,7 +50,7 @@ class _UpdateKategoriBarangState extends State<UpdateKategoriBarang> {
               onPressed: () {
                 if (formkey.currentState!.validate()) {
                   formkey.currentState!.save();
-                  UpdateKategoriBarang();
+                  kategoriBarangController.updateKategoriBarang(widget.id!, nama!);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
