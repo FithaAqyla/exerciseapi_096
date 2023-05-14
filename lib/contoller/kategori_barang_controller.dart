@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:restapi/model/kategori_barang_model.dart';
 
 class KategoriBarangController {
-  final String apiUrl = "https://10.0.2.2:8080/api/";
+  final String apiUrl = "http://10.0.2.2:8000/api/";
 
   Future<List<KategoriBarangModel>> getKategoriBarang() async {
     var result = await http.get(Uri.parse("${apiUrl}barang/getAllKB/"));
@@ -31,14 +31,15 @@ class KategoriBarangController {
     }
   }
 
-  Future updateKategoriBarang(KategoriBarangModel kategoriBarang) async {
-    var result =
-        await http.post(Uri.parse("${apiUrl}barang/update/{id}/"), body: {
-      "nama_kategori_barang": kategoriBarang.nama,
+  Future updateKategoriBarang(int id, String nama) async {
+    try {
+      var result = await http.post(Uri.parse("${apiUrl}barang/update/{id}/"), body: {
+      "nama_kategori_barang": nama,
     });
-    if (result.statusCode == 200) {
-      return jsonDecode(result.body);
-    } else {
+    
+    } 
+    catch (e) {
+      print(e.toString());
       throw Exception('Gagal update data kategori barang');
     }
   }
