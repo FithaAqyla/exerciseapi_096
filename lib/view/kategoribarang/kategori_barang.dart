@@ -71,6 +71,11 @@ class _KategoriBarangState extends State<KategoriBarang> {
                           listKategoriBarang.removeAt(index);
                         });
                       });
+                      var snackBar =
+                      const SnackBar(content: Text('Data Berhasil Disimpan'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                
+
                     },
                     icon: const Icon(
                       Icons.delete,
