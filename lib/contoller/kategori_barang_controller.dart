@@ -33,12 +33,16 @@ class KategoriBarangController {
 
   Future updateKategoriBarang(int id, String nama) async {
     try {
-      var result = await http.post(Uri.parse("${apiUrl}barang/update/{id}/"), body: {
-      "nama_kategori_barang": nama,
-    });
-    
-    } 
-    catch (e) {
+      var result =
+          await http.post(Uri.parse("${apiUrl}barang/update/{id}/"), body: {
+        "nama_kategori_barang": nama,
+      });
+      if (result.statusCode == 200) {
+        print("Kategori Barang Berhasil diUpdate");
+        return true;
+      }
+      return false;
+    } catch (e) {
       print(e.toString());
       throw Exception('Gagal update data kategori barang');
     }
